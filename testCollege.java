@@ -27,8 +27,8 @@ int nunI =0;
                     int totalStudent = input.nextInt();
                     System.out.println("3- number of Professors  ");
                     int numOFProfessors = input.nextInt();
-                  Department a = new Department(deptName,totalStudent,numOFProfessors);
-                     College.addDept(a);
+                  Department newDept = new Department(deptName,totalStudent,numOFProfessors);
+                     College.addDept(newDept);
 
 
 
