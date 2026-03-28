@@ -1,0 +1,28 @@
+public class College {
+    protected String name;
+    protected int numOfdept;
+    public Department [] deptList;
+
+    public College (String name, int size) {
+        this.name = name;
+        numOfdept = 0;
+        deptList = new Department [size];
+    }
+
+    public void addDept(Department D){
+        if(numOfdept < deptList.length) {
+            deptList[numOfdept]= D;
+            numOfdept++;
+        }
+        else
+            System.out.println("there is no space to add new department.");
+    }
+    public int sumOfstudent() {
+        int sum = 0;
+        for (int i=0;i<numOfdept; i++) {
+            sum += deptList[i].totalStudent;
+        }
+        return sum;
+    }
+
+}
