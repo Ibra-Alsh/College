@@ -7,7 +7,7 @@ public class Department {
     public Department (String deptName , int totalStudent, int numOFProfessors ) {
         this.deptName = deptName;
         this.totalStudent = totalStudent;
-        this.numOfProfessors=numOFProfessors;
+        this.numOfProfessors= 0;
         profList = new Professors[numOFProfessors];
     }
 
@@ -18,7 +18,7 @@ public class Department {
     public void Search_professor (String d) {
         boolean f = true;
         for (int i = 0 ; i<numOfProfessors;i++) {
-            if(profList[i].id.equalsIgnoreCase(d)) {
+            if(profList[i].getID().equalsIgnoreCase(d)) {
                 System.out.println(profList[i].toString());
                 f =false;
                 return;
@@ -38,7 +38,7 @@ public class Department {
     }
     public void removeProfessor(String k) {
         for(int i = 0 ; i<numOfProfessors;i++) {
-            if(profList[i].id.equalsIgnoreCase(k)) {
+            if(profList[i].getID().equalsIgnoreCase(k)) {
                 for(int j =i; j<numOfProfessors-1;j++) {
                     profList[j]=profList[j+1];
                 }
