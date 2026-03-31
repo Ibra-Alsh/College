@@ -1,4 +1,3 @@
-
 public class Professors {
     private String name;
     private String id ;
@@ -11,7 +10,7 @@ public class Professors {
         this.salary = salary;
     }
 
-    private double calcuataSalary() {
+    public double calcuataSalary() {
         if (isReward())
         return 10000+paper_publidhed*1500;
         else return 10000;
@@ -32,5 +31,9 @@ public class Professors {
                 ", salary=" + salary +
                 ", paper_publidhed=" + paper_publidhed +
                 '}';
+    }
+
+    public String getID (){
+        return this.id;
     }
 }
