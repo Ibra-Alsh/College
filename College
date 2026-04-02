@@ -2,13 +2,15 @@ public class College {
     protected String name;
     protected int numOfdept;
     public Department [] deptList;
-    //class Constructer
+
+  //class Constructer
     public College (String name, int size) {
         this.name = name;
         numOfdept = 0;
         deptList = new Department [size];
     }
-    //adds department to college
+
+   //adds department to college
     public void addDept(Department D){
         if(numOfdept < deptList.length) {
             deptList[numOfdept]= D;
@@ -17,6 +19,7 @@ public class College {
         else
             System.out.println("there is no space to add new department.");
     }
+
 //returns total number of students
     public int sumOfstudent() {
         int sum = 0;
