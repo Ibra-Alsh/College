@@ -10,13 +10,17 @@ public abstract class Student extends Department implements reward {
         this.id=id;
     }
 
+    //abstract class
     protected abstract double calculateGPA(double totalGradePoints, double totalCreditHours);
 
+    //abstract class
     public abstract double calculateGPA();
 
+    //abstract class
     @Override
     public abstract boolean isReward();
 
+    //returns a formatted string of all information stored in student
     @Override
     public String toString() {
         return "Student{" +
