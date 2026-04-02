@@ -4,6 +4,7 @@ public class Department {
     protected int numOfProfessors;
     public Professor[] profList;
 
+    //class constructor
     public Department (String deptName , int totalStudent, int numOFProfessors ) {
         this.deptName = deptName;
         this.totalStudent = totalStudent;
@@ -11,10 +12,12 @@ public class Department {
         profList = new Professor[numOFProfessors];
     }
 
+    //default constructor
     public Department() {
 
     }
-
+    
+//searches for professors that have been added by name in the department
     public Professor Search_professor (String d) {
         boolean f = true;
         for (int i = 0 ; i<numOfProfessors;i++) {
@@ -30,7 +33,7 @@ public class Department {
         return new Professor("", "", 0);
     }
 
-
+//adds a professor to the department
     public void addProfessor(Professor p) {
         if(numOfProfessors<profList.length) {
             profList[numOfProfessors]=p;
@@ -38,6 +41,8 @@ public class Department {
             System.out.println("the professor is added successfully");
         }
     }
+    
+    //removes professor from the department
     public void removeProfessor(String k) {
         for(int i = 0 ; i<numOfProfessors;i++) {
             if(profList[i].getId().equalsIgnoreCase(k)) {
@@ -52,6 +57,8 @@ public class Department {
         }
         System.out.println("the professr is not found");
     }
+    
+    //Calculates rewards based on papers published by professors
     public int countRewardProfessor(int n) {
         if(n<=0) {
             return 0;
