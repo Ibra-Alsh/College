@@ -5,7 +5,8 @@ public class testCollege {
     static Scanner input = new Scanner(System.in);
  
     public static void main(String[] args) {
- 
+
+        //startup menu
         System.out.println("*************** COLLEGE ****************");
         System.out.print("Enter College name: ");
         String name = input.nextLine();
@@ -17,6 +18,7 @@ public class testCollege {
  
         int option;
         do {
+            //inside college menu
             System.out.println("\n========== " + college.name + " - MAIN MENU ==========");
             System.out.println("1 - Add Department");
             System.out.println("2 - Select Department");
@@ -28,6 +30,7 @@ public class testCollege {
  
             switch (option) {
                 case 1:
+                    //creating department
                     System.out.print("Department name: ");
                     String deptName = input.nextLine();
                     System.out.print("Total students in department: ");
@@ -41,12 +44,14 @@ public class testCollege {
                     System.out.println("Department '" + deptName + "' added successfully!");
                     break;
                 case 2:
+                    //checks if any department has been created
                     if (college.numOfdept == 0) {
                         System.out.println("No departments added yet.");
                         return;
                     }
             
                     System.out.println("\n--- Departments ---");
+                    //shows available departments
                     for (int i = 0; i < college.numOfdept; i++) {
                         System.out.println((i + 1) + " - " + college.deptList[i].deptName);
                     }
@@ -81,6 +86,7 @@ public class testCollege {
     static void departmentMenu(Department dept) {
         int option;
         do {
+            //menu inside department
             System.out.println("\n===== DEPARTMENT: " + dept.deptName + " =====");
             System.out.println("1 - Add Professor");
             System.out.println("2 - Remove Professor");
@@ -116,6 +122,7 @@ public class testCollege {
                     Professor p = dept.Search_professor(profSearchId);
                     if (!p.getName().isEmpty()) {
                         do {
+                            //menu inside professor
                             System.out.println("\n===== PROFESSOR: " + p.getName() + " =====");
                             System.out.println("1 - Add papers published");
                             System.out.println("2 - Get number of papers published");
@@ -154,6 +161,7 @@ public class testCollege {
                             + ": " + dept.countRewardProfessor(dept.numOfProfessors));
                     break;
                 case 5:
+                    //student creation menu
                     System.out.println("\n--- Student Type ---");
                     System.out.println("1 - Undergraduate Student");
                     System.out.println("2 - Graduate Student");
