@@ -2,6 +2,7 @@ public class Undergraduate_Student extends Student {
     public int age;
     public double gpa;
 
+    //class constructor
     public Undergraduate_Student(String name, String id, int age) {
         super(name, id);
         this.age = age;
