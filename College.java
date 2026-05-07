@@ -1,30 +1,39 @@
 public class College {
     protected String name;
     protected int numOfdept;
-    public Department [] deptList;
+    public List deptList;
 
   //class Constructer
-    public College (String name, int size) {
+    public College (String name) {
         this.name = name;
         numOfdept = 0;
-        deptList = new Department [size];
+        deptList = new List();
     }
 
    //adds department to college
     public void addDept(Department D){
-        if(numOfdept < deptList.length) {
-            deptList[numOfdept]= D;
-            numOfdept++;
+        deptList.insertAtEnd(D);
+        numOfdept++;
+    }
+
+    //gets department by index
+    public Department getDept(int index) {
+        if (index < 0 || index >= numOfdept) return null;
+        Node current = deptList.getHead();
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
         }
-        else
-            System.out.println("there is no space to add new department.");
+        return (Department) current.getData();
     }
 
 //returns total number of students
     public int sumOfstudent() {
         int sum = 0;
-        for (int i=0;i<numOfdept; i++) {
-            sum += deptList[i].totalStudent;
+        Node current = deptList.getHead();
+        while (current != null) {
+            Department dept = (Department) current.getData();
+            sum += dept.totalStudent;
+            current = current.getNext();
         }
         return sum;
     }
