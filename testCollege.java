@@ -10,11 +10,8 @@ public class testCollege {
         System.out.println("*************** COLLEGE ****************");
         System.out.print("Enter College name: ");
         String name = input.nextLine();
-        System.out.print("Enter the maximum number of Departments: ");
-        int maxDepts = input.nextInt();
-        input.nextLine();
  
-        College college = new College(name, maxDepts);
+        College college = new College(name);
  
         int option;
         do {
@@ -53,7 +50,7 @@ public class testCollege {
                     System.out.println("\n--- Departments ---");
                     //shows available departments
                     for (int i = 0; i < college.numOfdept; i++) {
-                        System.out.println((i + 1) + " - " + college.deptList[i].deptName);
+                        System.out.println((i + 1) + " - " + college.getDept(i).deptName);
                     }
                     System.out.print("Select department number: ");
                     int idx = input.nextInt() - 1;
@@ -64,7 +61,7 @@ public class testCollege {
                         return;
                     }
             
-                    departmentMenu(college.deptList[idx]);
+                    departmentMenu(college.getDept(idx));
                     break;
                 case 3:
                     System.out.println("Total students across all departments: " + college.sumOfstudent());
@@ -225,4 +222,5 @@ public class testCollege {
             }
         } while (option != 6);
     }
+}
 }
