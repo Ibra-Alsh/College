@@ -2,14 +2,14 @@ public class Department {
     protected String deptName;
     protected int totalStudent;
     protected int numOfProfessors;
-    public Professor[] profList;
+    public List profList;
 
     //class constructor
     public Department (String deptName , int totalStudent, int numOFProfessors ) {
         this.deptName = deptName;
         this.totalStudent = totalStudent;
         this.numOfProfessors= 0;
-        profList = new Professor[numOFProfessors];
+        profList = new List();
     }
 
     //default constructor
@@ -20,12 +20,15 @@ public class Department {
 //searches for professors that have been added by name in the department
     public Professor Search_professor (String d) {
         boolean f = true;
-        for (int i = 0 ; i<numOfProfessors;i++) {
-            if(profList[i].getId().equalsIgnoreCase(d)) {
-                System.out.println(profList[i].toString());
-                f =false;
-                return profList[i];
+        Node current = profList.getHead();
+        while (current != null) {
+            Professor prof = (Professor) current.getData();
+            if (prof.getId().equalsIgnoreCase(d)) {
+                System.out.println(prof.toString());
+                f = false;
+                return prof;
             }
+            current = current.getNext();
         }
         if(f)
             System.out.println("No results found.");
@@ -35,27 +38,24 @@ public class Department {
 
 //adds a professor to the department
     public void addProfessor(Professor p) {
-        if(numOfProfessors<profList.length) {
-            profList[numOfProfessors]=p;
-            numOfProfessors++;
-            System.out.println("the professor is added successfully");
-        }
+        profList.insertAtEnd(p);
+        numOfProfessors++;
     }
     
-    //removes professor from the department
+    //removes professor from the department--Altered because of use of linked list instead of array.
     public void removeProfessor(String k) {
-        for(int i = 0 ; i<numOfProfessors;i++) {
-            if(profList[i].getId().equalsIgnoreCase(k)) {
-                for(int j =i; j<numOfProfessors-1;j++) {
-                    profList[j]=profList[j+1];
-                }
-                profList[numOfProfessors-1]=null;
+        Node current = profList.getHead();
+        while (current != null) {
+            Professor prof = (Professor) current.getData();
+            if (prof.getId().equalsIgnoreCase(k)) {
+                profList.removeNode(current); // handles head, tail, and middle correctly
                 numOfProfessors--;
                 System.out.println("the professor is removed successfully");
                 return;
             }
+            current = current.getNext();
         }
-        System.out.println("the professr is not found");
+        System.out.println("Professor with ID " + k + " not found.");
     }
     
     //Calculates rewards based on papers published by professors
@@ -64,11 +64,15 @@ public class Department {
             return 0;
         }
         int count=0;
-        if(profList[n-1] != null) {
-            if(profList[n-1].isReward()) {
-                count=1;
+        Node current = profList.getHead();
+        while (current != null) {
+            Professor prof = (Professor) current.getData();
+            if(prof.getPaper_published() >= n) {
+                count++;
             }
+            current = current.getNext();
         }
         return count+countRewardProfessor(n-1);
     }
+}
 }
