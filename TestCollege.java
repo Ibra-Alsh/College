@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Testcollege {
+public class TestCollege {
 
     static Scanner input = new Scanner(System.in);
 
