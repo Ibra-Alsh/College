@@ -1,5 +1,5 @@
 public class CollegeException extends Exception{
-public CollegeException(String m) {
-	super(m);
-}
+	public CollegeException(String m) {
+		super(m);
+	}
 }
