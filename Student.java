@@ -1,26 +1,27 @@
-public abstract class Student extends Department implements reward {
-
+import java.io.Serializable;
+ 
+public abstract class Student extends Department implements reward, Serializable {
     private String name;
-    private String id ;
-
-    //class constructor
-    public Student (String name , String id ){
+    private String id;
+ 
+    // class constructor
+    public Student(String name, String id) {
         super();
-        this.name=name;
-        this.id=id;
+        this.name = name;
+        this.id = id;
     }
-
-    //abstract class
+ 
+    // abstract method
     protected abstract double calculateGPA(double totalGradePoints, double totalCreditHours);
-
-    //abstract class
+ 
+    // abstract method
     public abstract double calculateGPA();
-
-    //abstract class
+ 
+    // abstract method
     @Override
     public abstract boolean isReward();
-
-    //returns a formatted string of all information stored in student
+ 
+    // returns a formatted string of all information stored in student
     @Override
     public String toString() {
         return "Student{" +
@@ -29,4 +30,3 @@ public abstract class Student extends Department implements reward {
                 '}';
     }
 }
-
