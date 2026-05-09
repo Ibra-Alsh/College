@@ -19,7 +19,7 @@ public class GUI extends JFrame {
         setSize(500, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
-        getContentPane().setBackground(Color. getHSBColor(200, 69 , 100));
+        getContentPane().setBackground(Color.darkGray);
 
 
         // Title at the top
